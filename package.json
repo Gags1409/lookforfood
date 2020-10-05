@@ -19,7 +19,7 @@
     "document:components": "wca analyze src --format markdown --outFile CODE-DOCS.md",
     "build": "webpack --mode production",
     "release": "standard-version",
-    "patch": "npm run release",
+    "patch": "npm run release -- --release-as patch",
     "minor": "npm run release -- --release-as minor",
     "major": "npm run release -- --release-as major",
     "dry-run": "npm run release -- --dry-run",
