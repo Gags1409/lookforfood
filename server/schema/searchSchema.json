@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "latitude": 37.7767362127501,
+            "longitude": -122.416394930077
+        }
+    ],
+    "required": [
+        "latitude",
+        "longitude"
+    ],
+    "properties": {
+        "latitude": {
+            "$id": "#/properties/latitude",
+            "type": "number",
+            "title": "The latitude schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "minimum": -90,
+            "maximum": 90,
+            "examples": [
+                37.7767362127501
+            ]
+        },
+        "longitude": {
+            "$id": "#/properties/longitude",
+            "type": "number",
+            "title": "The longitude schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "minimum": -180,
+            "maximum": 180,
+            "examples": [
+                -122.416394930077
+            ]
+        }
+    },
+    "additionalProperties": true
+}
