@@ -1,4 +1,5 @@
 import { ajax } from '@lion/ajax';
+import config from '../../config.js';
 
 export default class SearchService {
   constructor(lat, lon) {
@@ -13,7 +14,7 @@ export default class SearchService {
     };
     try {
       return ajax
-        .post('http://localhost:3000/trucks', req)
+        .post(`${config.path.host}:${config.path.port}/trucks`, req)
         .then(response => {
           return response;
         })
