@@ -1,5 +1,10 @@
-const express = require('express');
+/**
+ * Setup express server
+ * @module app
+ *
+ */
 
+const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const trucks = require('./trucks');

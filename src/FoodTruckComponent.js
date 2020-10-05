@@ -1,3 +1,20 @@
+/**
+ * Food truck component to list details of a food truck
+ *
+ * @element food-truck
+ *
+ *
+ * @prop {object} data - json object for food truck detail
+ * @prop {string} applicant - food truck company name
+ * @prop {string} address - food truck address
+ * @prop {number} latitude - Latitude of truck location
+ * @prop {number} longitude - Longitude of truck location
+ * @prop {number} distance - distance from searched location
+ * @prop {number} originLatitude - Latitude of searched location
+ * @prop {number} originLongitude - Longitude of searched location
+ *
+ *
+ */
 import { LitElement, html, css } from 'lit-element';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 
