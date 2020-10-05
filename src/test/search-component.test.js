@@ -1,8 +1,7 @@
 import { expect, fixture, html, elementUpdated } from '@open-wc/testing';
 import '../__elements-definitions/search-component.js';
 import sinon from 'sinon';
-import {validOutput,invalidInput} from './test-suite/trucks.js';
-
+import { validOutput } from './test-suite/trucks.js';
 
 describe('<search-component>', () => {
   let el;
@@ -44,7 +43,6 @@ describe('<search-component>', () => {
 
   describe('on submit valid latitude and longitude', () => {
     beforeEach(async () => {
-      // sinon.stub(el, 'searchService').returns(trucks);
       el = await fixture(html`
         <search-component
           latitude="37.7767362127501"
@@ -57,7 +55,7 @@ describe('<search-component>', () => {
     });
 
     afterEach(async () => {
-       sinon.restore();
+      sinon.restore();
     });
 
     it('should have latitude value ', async () => {
@@ -69,12 +67,10 @@ describe('<search-component>', () => {
     });
 
     it('should have no errors ', async () => {
-      // console.log("first",el.shadowRoot.querySelector(el.constructor.getScopedTagName('lon-input')));
       expect(el.errors).to.be.an('array').to.be.empty;
     });
 
     it('should have result ', async () => {
-      // expect(el.trucks).to.be.an('array').to.have.lengthOf(5);
       console.log('trucks', el.trucks);
     });
   });

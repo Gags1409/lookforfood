@@ -1,3 +1,17 @@
+/**
+ * Search web component.
+ *
+ * @element search-component
+ *
+ * @fires submit - click on search button
+ *
+ *
+ * @prop {number} latitude - Latitude to search
+ * @prop {number} longitude - Longitude to search
+ * @prop {Array} trucks - array of nearest 5 food trucks
+ * @prop {Array} errors - array of errors
+ *
+ */
 import { LionInput } from '@lion/input';
 import { LitElement, html, css } from 'lit-element';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
@@ -76,7 +90,7 @@ export class SearchComponent extends ScopedElementsMixin(LitElement) {
       latitude: { type: Number },
       longitude: { type: Number },
       trucks: { type: Array },
-      errors: { type: Array }
+      errors: { type: Array },
     };
   }
 
@@ -92,22 +106,28 @@ export class SearchComponent extends ScopedElementsMixin(LitElement) {
       this.searchService
         .getFoodTrucks()
         .then(res => {
-          if(res.data.errors.length > 0){
-            console.log("validation errors from server", res.data.errors);
-            this.errors.push("Invalid request, please check logs for details.");
+          if (res.data.errors.length > 0) {
+            // eslint-disable-next-line no-console
+            console.log('validation errors from server', res.data.errors);
+            this.errors.push('Invalid request, please check logs for details.');
             this.requestUpdate();
           } else {
+            if (res.data.data[0].distance > 50) {
+              this.errors.push(
+                'You seems to be really far from San Francisco.No food trucks found within 50Km.',
+              );
+            }
             this.trucks = res.data.data;
-          }  
-        }).catch(error => {
-          console.log("Something went wrong, make sure server is running.");
-          this.errors.push("Something went wrong, make sure server is running.");
+          }
+        })
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.log('Something went wrong, make sure server is running.', error);
+          this.errors.push('Something went wrong, make sure server is running.');
           this.requestUpdate();
         });
     }
   }
-
-
 
   render() {
     return html`

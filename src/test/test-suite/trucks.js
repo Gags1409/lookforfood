@@ -36,13 +36,13 @@ export const validOutput = {
       longitude: '-122.398098613167',
       distance: '2.416',
     },
-  ]
+  ],
 };
 
 export const invalidInput = {
   errors: [
-    "instance.latitude must have a maximum value of 90",
-    "instance.latitude must have a maximum value of 180"
+    'instance.latitude must have a maximum value of 90',
+    'instance.latitude must have a maximum value of 180',
   ],
-  data: []
+  data: [],
 };

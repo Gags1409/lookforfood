@@ -1,7 +1,7 @@
 /**
  * This contains all functionality related to trucks route
- * @class 
- * 
+ * @module router
+ *
  */
 
 const express = require('express');
@@ -31,16 +31,19 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   dist = Math.acos(dist);
   dist = (dist * 180) / Math.PI;
   dist = dist * 60 * 1.1515;
+  // K is Kilometres
   if (unit === 'K') {
     dist *= 1.609344;
   }
+  // N is nautical miles
   if (unit === 'N') {
     dist *= 0.8684;
   }
-  return dist;
+  return dist.toFixed(3);
 }
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
+  // eslint-disable-next-line no-console
   console.log('Time: ', Date.now());
   next();
 });
@@ -53,7 +56,7 @@ router.use(function timeLog(req, res, next) {
 
 // define the post search trucks request
 router.post('/', (req, res) => {
-   let response = {errors:[],data:[]};
+  let response = { errors: [], data: [] };
   //check if the current request.body payload is a valid
   const validReq = validate(req.body, searchSchema);
   if (validReq.errors && validReq.errors.length > 0) {
@@ -78,17 +81,13 @@ router.post('/', (req, res) => {
           address: data.Address,
           latitude: data.Latitude,
           longitude: data.Longitude,
-          distance: dist.toFixed(3),
+          distance: dist,
         };
         results.push(truckData);
       }
     })
     .on('end', () => {
-      const sortedResult = results.sort((a, b) => {
-        return a.Distance - b.Distance;
-      });
-      //const dataArrWithSet = new Set(sortedResult);
-      //const uniqueArr = [...dataArrWithSet];
+      const sortedResult = results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
       response.data = sortedResult.slice(0, 5);
       res.send(response);
     });

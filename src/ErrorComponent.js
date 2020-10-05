@@ -1,3 +1,13 @@
+/**
+ * Error component to display error
+ *
+ * @element error-message
+ *
+ *
+ * @prop {string} message - error message
+ *
+ *
+ */
 import { LitElement, html, css } from 'lit-element';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 
