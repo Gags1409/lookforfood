@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/Gags1409/lookforfood/compare/v1.4.1...v1.4.2) (2020-10-05)
+
+
+### Bug Fixes
+
+* patch release task and updated README ([3cfd02c](https://github.com/Gags1409/lookforfood/commit/3cfd02c98feb3b60d582075cc148fd21bff282ab))
+
 ### [1.4.1](https://github.com/Gags1409/lookforfood/compare/v1.4.0...v1.4.1) (2020-10-05)
 
 
