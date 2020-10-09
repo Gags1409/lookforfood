@@ -7,7 +7,7 @@ Find a food truck near you in San Francisco
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
-Make sure you have Node v13+ 
+Make sure you have Node v10.13.x+ 
 Checkout code from Github 
 
 ```
